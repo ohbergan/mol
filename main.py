@@ -5,9 +5,9 @@
 
 
 # Oppgave 5 & 6 - Ali
-import os
+import pyodbc
 
-current_path = os.path.dirname(__file__)
+current_path = pyodbc.path.dirname(__file__)
 
 conn_str = (r'DRIVER={microsoft access driver (*.mdb, *.accdb)};'
 r'dbq=' + current_path + '\medlemsregistrer.accdb;')
