@@ -30,22 +30,6 @@ def menu1():
     print()  # a blank line
 
 
-def menu2():
-    sql_str = "select MedlemsID, Fornavn, Etternavn, Mobil from Medlemmer"
-    cursor.execute(sql_str)
-    # Prints the cursor formatted as a table
-    # First the table header
-    table_cell_formatting = "{:<8} {:<20} {:<12}"
-    print(table_cell_formatting.format('ID', 'Navn', 'Mobil'))
-    print(table_cell_formatting.format('--------',
-          '-------------------', '------------'))
-    # Print all the rows in a table
-    for row in cursor.fetchall():
-        print(table_cell_formatting.format(
-            row[0] or "N/A", (row[1] + " " + row[2]) or "N/A", row[3] or "N/A"))
-    print()  # a blank line
-
-
 menu1()
 
 # Oppgave 4 - Emil
