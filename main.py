@@ -11,7 +11,7 @@ import os
 current_path = os.path.dirname(__file__)
 
 conn_str = (r'DRIVER={microsoft access driver (*.mdb, *.accdb)};'
-            r'dbq=' + current_path + '\medlemsregistrer.accdb;')
+            r'dbq=' + current_path + '\medlemsregister.accdb;')
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
 sql_str = "select * from kontaktinfo_python"
