@@ -5,14 +5,14 @@
 
 
 # Oppgave 5 & 6 - Ali
-import Pyodbc
+import pyodbc
+import os
 
-current_path = Pyodbc.path.dirname(__file__)
+current_path = os.path.dirname(__file__)
 
 conn_str = (r'DRIVER={microsoft access driver (*.mdb, *.accdb)};'
-r'dbq=' + current_path + '\medlemsregistrer.accdb;')
-
-conn = Pyodbc.connect(conn_str)
+            r'dbq=' + current_path + '\medlemsregistrer.accdb;')
+conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
 sql_str = "select * from kontaktinfo_python"
 cursor.execute(sql_str)
