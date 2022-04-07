@@ -19,9 +19,9 @@ def menu1():
     cursor.execute(sql_str)
     # Prints the cursor formatted as a table
     # First the table header
-    table_cell_formatting = "{:<8} {:<20} {:<12}"
-    print(table_cell_formatting.format('ID', 'Navn', 'Mobil'))
-    print(table_cell_formatting.format('--------',
+    table_cell_formatting = "{:<9} {:<20} {:<12}"
+    print(table_cell_formatting.format('MedlemsID', 'Navn', 'Mobil'))
+    print(table_cell_formatting.format('---------',
           '-------------------', '------------'))
     # Print all the rows in a table
     for row in cursor.fetchall():
