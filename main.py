@@ -14,9 +14,9 @@ conn_str = (r'DRIVER={microsoft access driver (*.mdb, *.accdb)};'
             r'dbq=' + current_path + '\medlemsregister.accdb;')
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
-sql_str = "select * from kontaktinfo_python"
-cursor.execute(sql_str)
 for row in cursor.fetchall():
     print(row)
+    
+
 
     
