@@ -32,6 +32,12 @@ def menu5():
         sql_str="INSERT INTO Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
         cursor.execute(sql_str)
 
+
+    elif ans == "2":
+        print("hvem vil du slette?")
+        sql_str=f"DELETE FROM medlemmer where MedlemsID like {input}"
+        cursor.execute(sql_str)
+
     
 
 
