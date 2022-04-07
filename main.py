@@ -5,7 +5,9 @@
 
 
 # Oppgave 5 & 6 - Ali
+from multiprocessing.connection import answer_challenge
 from select import select
+from turtle import clear
 import pyodbc
 import os
 
@@ -21,9 +23,11 @@ for row in cursor.fetchall():
 def close():
     os.system=("cls")
 
-def menu5_1():
+def menu5():
+    clear()
+ans=input("velg tall.")
 
-
+if ans == "1":
 
    print("her kan du se medlemene.")
    sql_str="INSERT INTO Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
