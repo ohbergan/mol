@@ -25,13 +25,14 @@ def close():
 
 def menu5():
     clear()
-ans=input("velg tall.")
+    print("betalte medlemmer.")
+    ans=input("\velg tall.")
 
-if ans == "1":
+    if ans == "1":
 
-   print("her kan du se medlemene.")
-   sql_str="INSERT INTO Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
-   cursor.execute(sql_str)
+        print("her kan du se medlemene som er full eller støtte .")
+        sql_str="INSERT INTO Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
+        cursor.execute(sql_str)
 
     
 
