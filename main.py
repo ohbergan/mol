@@ -5,6 +5,7 @@
 
 
 # Oppgave 5 & 6 - Ali
+from select import select
 import pyodbc
 import os
 
@@ -17,6 +18,19 @@ cursor = conn.cursor()
 for row in cursor.fetchall():
     print(row)
     
+def close()
+    os.system=("cls")
+
+def menu5_1():
+
+if ans == "1":
+
+   print("her kan du se medlemene.")
+   sql_str="INSERT INTO Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
+   cursor.execute(sql_str)
+
+    
+
 
 
     
