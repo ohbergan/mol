@@ -17,8 +17,6 @@ conn_str = (r'DRIVER={microsoft access driver (*.mdb, *.accdb)};'
             r'dbq=' + current_path + '\medlemsregister.accdb;')
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
-for row in cursor.fetchall():
-    print(row)
     
 def close():
     os.system=("cls")
