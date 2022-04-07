@@ -18,12 +18,12 @@ cursor = conn.cursor()
 for row in cursor.fetchall():
     print(row)
     
-def close()
+def close():
     os.system=("cls")
 
 def menu5_1():
 
-if ans == "1":
+
 
    print("her kan du se medlemene.")
    sql_str="INSERT INTO Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
