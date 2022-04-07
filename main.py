@@ -39,6 +39,17 @@ def menu5():
         cursor.execute(sql_str)
 
     
+    elif ans == "3":
+        print("hvor mye vil du ligge i kortinget?")
+        sql_str=""
+        cursor.execute(sql_str)
+
+
+    elif ans == "4":
+        print("")
+
+
+    
 
 
 
