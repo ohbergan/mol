@@ -6,6 +6,7 @@
 
 # Oppgave 5 & 6 - Ali
 
+from turtle import clear
 import pyodbc
 import os
 
