@@ -5,9 +5,7 @@
 
 
 # Oppgave 5 & 6 - Ali
-from multiprocessing.connection import answer_challenge
-from select import select
-from turtle import clear
+
 import pyodbc
 import os
 
