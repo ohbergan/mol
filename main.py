@@ -45,7 +45,14 @@ def menu5():
 
 
     elif ans == "4":
-        print("")
+        print("skriv ut csv-fil her.")
+        sql_str=""
+        cursor.execute(sql_str)
+
+    elif ans == "5":
+        print("tilbake til hovedmenyen.")
+        sql_str="cls"
+        cursor.execute(sql_str)
 
 
     
