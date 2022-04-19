@@ -9,7 +9,19 @@
 from turtle import clear
 import pyodbc
 import os
+import csv
 
+
+header = ['fornavn', 'etternavn', 'telefon']
+data = []
+# open the file in the write mode
+with open('medlemsliste.csv', 'w', encoding='UTF8', newline='') as f:
+    # create the csv writer
+    writer = csv.writer(f)
+    # write a row to the csv file
+    writer.writerow(header)
+
+    writer.writerow(data)
 
 current_path = os.path.dirname(__file__)
 
