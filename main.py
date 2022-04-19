@@ -11,7 +11,7 @@ import pyodbc
 import os
 import csv
 
-with open('employee_birthday.txt') as csv_file:
+with open('medlems_liste.txt') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
     for row in csv_reader:
@@ -59,7 +59,7 @@ def menu5():
 
     elif ans == "4":
         print("skriv ut csv-fil her.")
-        sql_str=""
+        sql_str="SELECT Medlemmer.Fornavn, Medlemmer.Etternavn, Medlemmer.[E-post]FROM Poststeder INNER JOIN (Medlemstyper INNER JOIN Medlemmer ON Medlemstyper.MTypeID = Medlemmer.MTypeID) ON Poststeder.Postnr = Medlemmer.Postnr;"
         cursor.execute(sql_str)
 
     elif ans == "5":
