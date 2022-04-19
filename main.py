@@ -12,7 +12,7 @@ import os
 import csv
 
 
-header = ['fornavn', 'etternavn', 'telefon']
+header = ['fornavn', 'etternavn', 'telefon', 'E-post']
 data = []
 # open the file in the write mode
 with open('medlemsliste.csv', 'w', encoding='UTF8', newline='') as f:
