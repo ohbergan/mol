@@ -132,29 +132,28 @@ def menu2():
 
 def menu3():
     clearScreen()
-    memberID = input("MedlemsID: ")
-    sql_str = "select top 1 * from Medlemmer where MedlemsID like "+memberID
+    print(StrMod.bold("SPØRRINGER"))
+    print(f"[{StrMod.blue('1')}] Medlemmer med ubetalt kontigent")
+    print(f"[{StrMod.blue('2')}] Medlemmer som er pensjonister (eldre enn 57 år)")
+    print(
+        f"[{StrMod.blue('3')}] Medlemmer som er unge voksene (mellom 18 og 30 år gamle)")
+    print(f"[{StrMod.blue('4')}] Finn medlemmer eldre enn...")
+    print(f"[{StrMod.blue('5')}] Medlemmer som bor på et valgfritt sted")
+    print(f"[{StrMod.blue('6')}] Gjennomsnittlig alder på medlemmer")
+    print(f"[{StrMod.blue('7')}] Medlemmer i Bestfold og Telemark")
+    print(f"[{StrMod.blue('8')}] Tibalke til hovedmenyen")
 
-    cursor.execute(sql_str)
-    clearScreen()
-    for row in cursor.fetchall():
-        betalt = 'Ja' if row[0] == True else 'Nei'
-        print(StrMod.bold("MEDLEMSINFORMASJON"))
-        print(f"{StrMod.bold(StrMod.blue('MedlemsID:'))} {row[0] or 'N/A'}")
-        print(f"{StrMod.bold(StrMod.blue('Fornavn:'))} {row[1] or 'N/A'}")
-        print(f"{StrMod.bold(StrMod.blue('Etternavn:'))} {row[2] or 'N/A'}")
-        print(f"{StrMod.bold(StrMod.blue('Adresse:'))} {row[3] or 'N/A'}")
-        print(f"{StrMod.bold(StrMod.blue('Postnr:'))} {row[4] or 'N/A'}")
-        print(f"{StrMod.bold(StrMod.blue('Telefon:'))} {row[5] or 'N/A'}")
-        print(f"{StrMod.bold(StrMod.blue('Mobil:'))} {row[6] or 'N/A'}")
-        print(f"{StrMod.bold(StrMod.blue('E-post:'))} {row[7] or 'N/A'}")
-        print(f"{StrMod.bold(StrMod.blue('Fødelsdato:'))} {row[8] or 'N/A'}")
-        print(
-            f"{StrMod.bold(StrMod.blue('MedlemstypeID:'))} {row[9] or 'N/A'}")
-        print(
-            f"{StrMod.bold(StrMod.blue('Betalt:'))} {'Ja' if row[10] == True else 'Nei'}")
-        print()
-        input(StrMod.bold("KLIKK ENTER FOR Å FORTSETTE"))
+    while True:
+        try:
+            menu_choice = int(input(StrMod.bold("Menyvalg:")+" "))
+            if menu_choice > 0 and menu_choice <= 8:
+                print("ye")
+                break
+            else:
+                print(f"Menyvalg ikke gyldig")
+
+        except ValueError:
+            print("Menyvalg ikke gyldig")
 
 
 menu3()
