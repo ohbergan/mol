@@ -14,11 +14,11 @@ import csv
 
 header = ['fornavn', 'etternavn', 'telefon', 'E-post']
 data = []
-# open the file in the write mode
+
 with open('medlemsliste.csv', 'w', encoding='UTF8', newline='') as f:
-    # create the csv writer
+    
     writer = csv.writer(f)
-    # write a row to the csv file
+    
     writer.writerow(header)
 
     writer.writerow(data)
@@ -66,6 +66,11 @@ def menu5():
         print("tilbake til hovedmenyen.")
         sql_str="cls"
         cursor.execute(sql_str)
+
+
+    def menu6():
+        clear()
+        
 
 
     
