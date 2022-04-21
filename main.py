@@ -69,8 +69,8 @@ def menu5():
 
 
     def menu6():
-        clear()
-        
+        clear(6)
+
 
 
     
