@@ -121,8 +121,7 @@ def menu5():
 
     elif ans == "5":
         print("tilbake til hovedmenyen.")
-        sql_str="cls"
-        cursor.execute(sql_str)
+        clear()
 
 
     def menu6():
