@@ -87,7 +87,7 @@ def menu5():
 
     elif ans == "4":
         print("skriv ut csv-fil her.")
-        sql_str="SELECT Medlemmer.Fornavn, Medlemmer.Etternavn, Medlemmer.[E-post]FROM Poststeder INNER JOIN (Medlemstyper INNER JOIN Medlemmer ON Medlemstyper.MTypeID = Medlemmer.MTypeID) ON Poststeder.Postnr = Medlemmer.Postnr;"
+        sql_str="SELECT Medlemmer.[Fornavn] & " " & [Etternavn] AS Navn, Medlemmer.Telefon, Medlemmer.[E-post], Medlemmer.FødselsdatoFROM Poststeder INNER JOIN (Medlemstyper INNER JOIN Medlemmer ON Medlemstyper.MTypeID = Medlemmer.MTypeID) ON Poststeder.Postnr = Medlemmer.Postnr;"
         cursor.execute(sql_str)
 
     elif ans == "5":
