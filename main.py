@@ -41,7 +41,8 @@ data = [
         ['Rut Hauge', '33445566', 'ruthauge@online.no', '28.12.1976'],
         ['Birger Knudsen', '33545678', '', '12.05.1974'],
         ['Oddbjørn Lunn', '33976545', '', '23.06.1956'],
-        ['Anne Hem Vestlie', '34565678', 'annehem@tiscali.no', '20.08.1996']]
+        ['Anne Hem Vestlie', '34565678', 'annehem@tiscali.no', '20.08.1996']
+        ]
 
 with open('medlemsliste.csv', 'w', encoding='UTF8', newline='') as f:
     
