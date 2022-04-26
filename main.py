@@ -5,8 +5,6 @@ import pyodbc
 import os
 
 # A class used to modify a string
-
-
 class StrMod:
     def black(str):
         return f"\033[30m{str}\033[0m"
@@ -84,8 +82,6 @@ conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
 
 # A function used to clear the screen
-
-
 def clearScreen():
     command = 'clear'
     if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
@@ -476,3 +472,4 @@ while True:
     except ValueError:
         # Let the user know the menu choice isn't valid
         print("Menyvalg ikke gyldig")
+
