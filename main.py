@@ -15,7 +15,7 @@ import csv
 header = ['fornavn', 'etternavn', 'telefon', 'E-post']
 data = []
 
-with open('medlemsliste.csv', 'w', encoding='UTF8', newline='') as f:
+with open('medlemsregistrer.accdb', 'w', encoding='UTF8', newline='') as f:
     
     writer = csv.writer(f)
     
