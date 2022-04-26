@@ -63,7 +63,6 @@ data = [
  
     ['Kari Åsen', 23245245, 'kari@msn.com', '13.03.1975'],
 
-  
     ['Rut Hauge', 33445566, 'ruthauge@online.no', '28.12.1976'],
   
     ['Birger Knudsen', 33545678, '', '12.05.1974'],
@@ -79,7 +78,7 @@ with open('medlemsliste.csv', 'w', encoding='UTF8', newline='') as f:
     
     writer.writerow(header)
 
-    writer.writerow(data)
+    writer.writerows(data)
 
 current_path = os.path.dirname(__file__)
 
