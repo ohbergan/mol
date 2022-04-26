@@ -110,7 +110,7 @@ def menu5():
     
     elif ans == "3":
         print("hvor mye vil du ligge i kortinget?")
-        sql_str=""
+        sql_str=f"{input}*(1+10/100)"
         cursor.execute(sql_str)
 
 
