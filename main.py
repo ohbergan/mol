@@ -87,16 +87,37 @@ conn_str = (r'DRIVER={microsoft access driver (*.mdb, *.accdb)};'
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
     
+
+  
+
+
+
+
 def clear():
     os.system=('cls')
 
 def menu5():
+    print("\nvedlikehold\n")
+    print("1. se medlemene som er full eller støtte")
+    print("2. slette bruker")
+    print("3. betale med ekstra kortinget")
+    print("4. skriv ut csv-fil")
+    print("5. tilbake til hovedmeny")
+
+
+
+
+ans="start"
+while ans != "5":
+      clear()
+      menu5()
+
+def menu5():
     clear()
+
     print("vedlikehold.")
     ans=input("\velg tall.")
-
     if ans == "1":
-
         print("her kan du se medlemene som er full eller støtte .")
         sql_str="INSERT INTO Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
         cursor.execute(sql_str)
@@ -115,13 +136,11 @@ def menu5():
 
 
     elif ans == "4":
-        print("skriv ut csv-fil her.")
+        print("her er csv-filen.")
         sql_str="SELECT Medlemmer.[Fornavn] & " " & [Etternavn] AS Navn, Medlemmer.Telefon, Medlemmer.[E-post], Medlemmer.FødselsdatoFROM Poststeder INNER JOIN (Medlemstyper INNER JOIN Medlemmer ON Medlemstyper.MTypeID = Medlemmer.MTypeID) ON Poststeder.Postnr = Medlemmer.Postnr;"
         cursor.execute(sql_str)
 
-    elif ans == "5":
-        print("tilbake til hovedmenyen.")
-        clear()
+    
 
 
     def menu6():
