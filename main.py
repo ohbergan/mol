@@ -87,7 +87,7 @@ conn_str = (r'DRIVER={microsoft access driver (*.mdb, *.accdb)};'
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
     
-def close():
+def clear():
     os.system=('cls')
 
 def menu5():
