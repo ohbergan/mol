@@ -72,7 +72,7 @@ data = [
     ['Anne Hem Vestlie', 34565678, 'annehem@tiscali.no', '20.08.1996']
 ]
 
-with open('medlemsliste.csv', 'w', encoding='UTF8', newline='') as f:
+with open('medlemsliste.csv', 'r', encoding='UTF8', newline='') as f:
     
     writer = csv.writer(f)
     
