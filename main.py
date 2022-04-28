@@ -1,10 +1,11 @@
 # Oppgave 1, 2 & 3 - Ole Halvor
-
-from lib2to3.pgen2.token import RPAR
 import pyodbc
 import os
+from datetime import datetime
 
 # A class used to modify a string
+
+
 class StrMod:
     def black(str):
         return f"\033[30m{str}\033[0m"
@@ -82,6 +83,8 @@ conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
 
 # A function used to clear the screen
+
+
 def clearScreen():
     command = 'clear'
     if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
@@ -408,41 +411,16 @@ def menu3():
             print("Menyvalg ikke gyldig")
 
 
-# Oppgave 4 - Emil
-
-from email.headerregistry import Address
-import os
-import pyodbc
-from datetime import datetime
-
-# Lagrer path til det aktive scriptet i variabelen current_path
-
-current_path = os.path.dirname(__file__)
-
-# connection-strengen
-
-conn_str = (r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-            r'DBQ=' + current_path + '\Medlemsregister.accdb;')
-
-conn = pyodbc.connect(conn_str)
-cursor = conn.cursor()
-
-# Function used for clearing the terminal
-def clear():
-    os.system('cls')
-
-   
-# The program starts here
+# The fourth menu item
 def menu4():
-    clear()
+    clearScreen()
     print("\nHovedmeny for Vedlikehold medlemmer\n")
     print("\n1. Legg til et nytt medlem")
     print("\n2. Slett et medlem")
     print("\n3. Registrere om et medlem har betalt kontigenten")
     print("\n4. Endre data for et medlem, f.eks, endre adresse")
     print("\n5. Tilbake til hovedmenyen")
-    ans=input("\nHva ønsker du å gjøre? Velg tall.\n")
-
+    ans = input("\nHva ønsker du å gjøre? Velg tall.\n")
 
     if ans == "1":
         print("Her kan du legge til et nytt medlem")
@@ -457,15 +435,12 @@ def menu4():
         birthdate = datetime.strptime(
             input("Fødselsdato (dd.mm.yyyy): "), '%d.%m.%Y')
         membertype = int(input("Medlemstype (1 = fullt, 2 = støtte): "))
-    
-        cursor.execute(f"INSERT INTO Medlemmer (Fornavn, Etternavn, Adresse, Postnr, Telefon, Mobil, Fødselsdato, `E-post`, MTypeID, Betalt) VALUES ('{first_name}','{last_name}','{adress}','{postal_code}','{phone}','{mobile}','{birthdate}','{email}',{membertype},{False})")
+
+        cursor.execute(
+            f"INSERT INTO Medlemmer (Fornavn, Etternavn, Adresse, Postnr, Telefon, Mobil, Fødselsdato, `E-post`, MTypeID, Betalt) VALUES ('{first_name}','{last_name}','{adress}','{postal_code}','{phone}','{mobile}','{birthdate}','{email}',{membertype},{False})")
         conn.commit()
 
         print("Brukeren ble opprettet!")
-
-
-        
-    
 
     elif ans == "2":
         print("Her kan du slette et medlem")
@@ -475,31 +450,28 @@ def menu4():
 
         print("Medlemmet ble slettet!")
 
-
-    
     elif ans == "3":
         print("Her ser du om et medlem har betalt kontigenten, 1 = betalt")
         sql_str = "select MedlemsID, Fornavn, Etternavn, Mobil, Betalt from Medlemmer"
         cursor.execute(sql_str)
-        # Prints the cursor formatted as a table    
-        # First the table header    
+        # Prints the cursor formatted as a table
+        # First the table header
         table_formatting = "{:<9} {:<20} {:<12}"
         print(table_formatting.format('MedlemsID', 'Navn', 'Kontigent'))
-        print(table_formatting.format('---------', '-------------------', '------------'))
+        print(table_formatting.format('---------',
+              '-------------------', '------------'))
         # Print all the rows in a table
         for row in cursor.fetchall():
             if row[4] == True:
-                print(table_formatting.format( row[0] or "N/A", (row[1] + " " + row[2]) or "N/A", row[4] or "N/A"))
-        
-        
-        print() # a blank line
+                print(table_formatting.format(
+                    row[0] or "N/A", (row[1] + " " + row[2]) or "N/A", row[4] or "N/A"))
 
-    
+        print()  # a blank line
+
     elif ans == "4":
 
-
         def menu44():
-            clear()
+            clearScreen()
             print("\nHovedmeny for endring av medlem\n")
             print("1. Endre all informasjonen til et medlem")
             print("2. Endre Fornavn")
@@ -512,9 +484,7 @@ def menu4():
             print("9. Endre Fødselsdato")
             print("10. Endre Medlemstype")
             print("11. Endre Betalt")
-            ans=input("\nHva ønsker du å gjøre? Velg tall.\n")
-
-        
+            ans = input("\nHva ønsker du å gjøre? Velg tall.\n")
 
             if ans == "1":
 
@@ -530,120 +500,132 @@ def menu4():
                 email = input("E-post: ")
                 birthdate = datetime.strptime(
                     input("Fødselsdato (dd.mm.yyyy): "), '%d.%m.%Y')
-                membertype = int(input("Medlemstype (1 = fullt, 2 = støtte): "))
+                membertype = int(
+                    input("Medlemstype (1 = fullt, 2 = støtte): "))
                 betalt = True if input("Betalt (Ja, Nei): ") == "Ja" else False
-            
-                cursor.execute(f"UPDATE Medlemmer SET Fornavn = '{first_name}', Etternavn= '{last_name}', Adresse = '{adress}', Postnr = '{postal_code}', Telefon = '{phone}', Mobil = '{mobile}', E-Post = '{email}', Fødselsdag = '{birthdate}', Medlemstype = '{membertype}', Betalt = {betalt} WHERE MedlemsID = {memeberID}")
+
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Fornavn = '{first_name}', Etternavn= '{last_name}', Adresse = '{adress}', Postnr = '{postal_code}', Telefon = '{phone}', Mobil = '{mobile}', E-Post = '{email}', Fødselsdag = '{birthdate}', Medlemstype = '{membertype}', Betalt = {betalt} WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
 
-            elif ans =="2":
+            elif ans == "2":
                 print("Her kan du endre fornavnet til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 first_name = input("Fornavn: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET Fornavn = '{first_name}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Fornavn = '{first_name}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
 
-            elif ans =="3":
+            elif ans == "3":
                 print("Her kan du endre etternavnet til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 last_name = input("Etternavn: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET Etternavn = '{last_name}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Etternavn = '{last_name}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
 
-            elif ans =="4":
+            elif ans == "4":
                 print("Her kan du endre adressen til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 adress = input("Adresse: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET Adresse = '{adress}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Adresse = '{adress}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
-            
-            elif ans =="5":
+
+            elif ans == "5":
                 print("Her kan du endre Postnummeret til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 postal_code = input("Postnr: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET Postnr = '{postal_code}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Postnr = '{postal_code}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
 
-            elif ans =="6":
+            elif ans == "6":
                 print("Her kan du endre Telefonnummeret til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 phone = input("Telefon: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET Telefon = '{phone}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Telefon = '{phone}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
 
-            elif ans =="7":
+            elif ans == "7":
                 print("Her kan du endre Mobilnummeret til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 mobile = input("Mobil: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET Mobil = '{mobile}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Mobil = '{mobile}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
 
-            elif ans =="8":
+            elif ans == "8":
                 print("Her kan du endre Eposten til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 email = input("Epost: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET E-post = '{email}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET E-post = '{email}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
 
-            elif ans =="9":
+            elif ans == "9":
                 print("Her kan du endre Fødselsdatoen til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 birthdate = input("Fødselsdato: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET Fødelsdato = '{birthdate}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Fødelsdato = '{birthdate}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
 
-            elif ans =="10":
+            elif ans == "10":
                 print("Her kan du endre Medlemstypen til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 membertype = input("Medlemstype: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET Medlemstype = '{membertype}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Medlemstype = '{membertype}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
 
-            elif ans =="11":
+            elif ans == "11":
                 print("Her kan du endre Betalt til et medlem:")
-                
+
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 betalt = input("Betalt: ")
 
-                cursor.execute(f"UPDATE Medlemmer SET Betalt = '{betalt}' WHERE MedlemsID = {memeberID}")
+                cursor.execute(
+                    f"UPDATE Medlemmer SET Betalt = '{betalt}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
@@ -651,9 +633,7 @@ def menu4():
 
     elif ans == "5":
         print("Trykk [ENTER] for å fortsette!")
-    
-menu4()
-        
+
 # Oppgave 5 & 6 - Ali
 
 
@@ -697,7 +677,7 @@ while True:
             # User selected menu choice 4, run the appropiate code
             elif menu_choice == 4:
                 # Run the chosen menu
-                print()
+                menu4()
 
             # User selected menu choice 5, run the appropiate code
             elif menu_choice == 5:
@@ -715,4 +695,3 @@ while True:
     except ValueError:
         # Let the user know the menu choice isn't valid
         print("Menyvalg ikke gyldig")
-
