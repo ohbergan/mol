@@ -88,7 +88,7 @@ conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
     
 def close():
-    os.system=("cls")
+    os.system=('cls')
 
 def menu5():
     clear()
