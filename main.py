@@ -422,9 +422,11 @@ def menu4():
     print("\n5. Tilbake til hovedmenyen")
     ans = input("\nHva ønsker du å gjøre? Velg tall.\n")
 
+    #prints ans nr.1
     if ans == "1":
         print("Her kan du legge til et nytt medlem")
 
+        #Inputs for variables that are used for the code
         first_name = input("Fornavn: ")
         last_name = input("Etternavn: ")
         adress = input("Adresse: ")
@@ -436,20 +438,25 @@ def menu4():
             input("Fødselsdato (dd.mm.yyyy): "), '%d.%m.%Y')
         membertype = int(input("Medlemstype (1 = fullt, 2 = støtte): "))
 
+        #The code that changes the table.
         cursor.execute(
             f"INSERT INTO Medlemmer (Fornavn, Etternavn, Adresse, Postnr, Telefon, Mobil, Fødselsdato, `E-post`, MTypeID, Betalt) VALUES ('{first_name}','{last_name}','{adress}','{postal_code}','{phone}','{mobile}','{birthdate}','{email}',{membertype},{False})")
         conn.commit()
 
         print("Brukeren ble opprettet!")
 
+    #Prints ans nr.2
     elif ans == "2":
-        print("Her kan du slette et medlem")
+        print("Her kan du slette et medlem")   
         medlems_id = int(input("\nMedlemsID til medlem som skal slettes: \n"))
+        
+        #Code for deleting a user
         sql_str = f"DELETE FROM Medlemmer WHERE MedlemsID like {medlems_id}"
         cursor.execute(sql_str)
 
         print("Medlemmet ble slettet!")
 
+    #Prints ans nr.3
     elif ans == "3":
         print("Her ser du om et medlem har betalt kontigenten, 1 = betalt")
         sql_str = "select MedlemsID, Fornavn, Etternavn, Mobil, Betalt from Medlemmer"
@@ -468,8 +475,10 @@ def menu4():
 
         print()  # a blank line
 
+    #Prints ans nr.4
     elif ans == "4":
 
+    #Prints a new menu with different choices on how to change the info of a used
         def menu44():
             clearScreen()
             print("\nHovedmeny for endring av medlem\n")
@@ -486,10 +495,12 @@ def menu4():
             print("11. Endre Betalt")
             ans = input("\nHva ønsker du å gjøre? Velg tall.\n")
 
+    #Prints ans nr.1 for menu44
             if ans == "1":
 
                 print("Her kan du endre all informasjonen til et medlem:")
 
+    #Variables for changing info of user
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 first_name = input("Fornavn: ")
                 last_name = input("Etternavn: ")
@@ -503,7 +514,8 @@ def menu4():
                 membertype = int(
                     input("Medlemstype (1 = fullt, 2 = støtte): "))
                 betalt = True if input("Betalt (Ja, Nei): ") == "Ja" else False
-
+    
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Fornavn = '{first_name}', Etternavn= '{last_name}', Adresse = '{adress}', Postnr = '{postal_code}', Telefon = '{phone}', Mobil = '{mobile}', E-Post = '{email}', Fødselsdag = '{birthdate}', Medlemstype = '{membertype}', Betalt = {betalt} WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -515,7 +527,8 @@ def menu4():
 
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 first_name = input("Fornavn: ")
-
+    
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Fornavn = '{first_name}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -528,6 +541,7 @@ def menu4():
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 last_name = input("Etternavn: ")
 
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Etternavn = '{last_name}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -540,6 +554,7 @@ def menu4():
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 adress = input("Adresse: ")
 
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Adresse = '{adress}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -552,6 +567,7 @@ def menu4():
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 postal_code = input("Postnr: ")
 
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Postnr = '{postal_code}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -564,6 +580,7 @@ def menu4():
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 phone = input("Telefon: ")
 
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Telefon = '{phone}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -575,7 +592,8 @@ def menu4():
 
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 mobile = input("Mobil: ")
-
+    
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Mobil = '{mobile}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -588,6 +606,7 @@ def menu4():
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 email = input("Epost: ")
 
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET E-post = '{email}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -600,6 +619,7 @@ def menu4():
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 birthdate = input("Fødselsdato: ")
 
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Fødelsdato = '{birthdate}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -612,6 +632,7 @@ def menu4():
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 membertype = input("Medlemstype: ")
 
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Medlemstype = '{membertype}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
@@ -624,13 +645,17 @@ def menu4():
                 memeberID = input("ID til medlemme du ønsker å endre: ")
                 betalt = input("Betalt: ")
 
+    #code for changing the info of the user
                 cursor.execute(
                     f"UPDATE Medlemmer SET Betalt = '{betalt}' WHERE MedlemsID = {memeberID}")
                 conn.commit()
 
                 print("Medlemmet ble endret!")
+        
+     #Runs menu44   
         menu44()
 
+    #Prints ans nr.5
     elif ans == "5":
         print("Trykk [ENTER] for å fortsette!")
 
