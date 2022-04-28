@@ -125,7 +125,7 @@ def menu5():
 
 
     def menu6():
-        clear(close)
+        clear()
 
 
 
