@@ -96,6 +96,13 @@ cursor = conn.cursor()
 def clear():
     os.system=('cls')
 
+def startpage():
+    print("\nstartside\n")
+
+
+
+
+
 def menu5():
     print("\nvedlikehold\n")
     print("1. se medlemene som er full eller støtte")
@@ -109,8 +116,15 @@ def menu5():
 
 ans="start"
 while ans != "5":
-      clear()
-      menu5()
+    clear()
+    startpage()
+
+def startpage():
+    clear()
+
+
+
+
 
 def menu5():
     clear()
