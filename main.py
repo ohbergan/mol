@@ -33,38 +33,22 @@ def clear():
          command = 'cls'
      os.system(command)
 
-
+5.Vedlikehold5.1.Legg til en medlemstype (Fullt medlem, støttemedlem osv)5.2.Slett en medlemstype5.3.Øk kontingentenmed 10%5.4.Skrive medlemslisten ut til en csv-fil5.5.Tilbake til Hovedmenyen6.Avslutt
 
 
 
 def menu5():
     print("\nvedlikehold\n")
-    print("1. \nse medlemene som er full eller støtte")
-    print("2. \nslette bruker")
-    print("3. \nbetale med ekstra kortinget")
-    print("4. \nskriv ut csv-fil")
+    print("1. \nLegg til en medlemstype (Fullt medlem, støttemedlem osv)")
+    print("2. \nSlett en medlemstype")
+    print("3. \nØk kontingentenmed 10%")
+    print("4. \nSkrive medlemslisten ut til en csv-fil")
     print("5. \ntilbake til hovedmeny")
     ans = input("\nhva vil du velge i dag?\n")
 
-
-
-ans="start"
-while ans != "5":
-    clear()
-    menu5()
-
-
-
-
-
-def menu5():
-    clear()
-
-    print("vedlikehold.")
-    ans=input("\velg tall.")
     if ans == "1":
         print("her kan du se medlemene som er full eller støtte .")
-        sql_str="INSERT INTO Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
+        sql_str="select Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
         cursor.execute(sql_str)
         input()
 
@@ -156,8 +140,11 @@ def menu5():
     
 
 
-    def menu6():
-        clear()
+
+menu5()
+
+def menu6():
+    clear()
 
 
 
