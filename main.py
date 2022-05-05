@@ -46,14 +46,17 @@ def menu5():
 
     if ans == "1":
         print("Legg til en medlemstype (Fullt medlem, støttemedlem osv).")
-        sql_str="select Medlemstyper ( MTypeNavn, Kontigent ) Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
+        MTypeNavn = int(input("\nligg inn MTypenavn: \n"))
+        Kontigent = int(input("\nligg inn kotigent: \n"))
+        sql_str=f"INSERT INTO Medlemstyper (MTypeNavn, Kontigent) VALUES ('{MTypeNavn}','{Kontigent}');"
         cursor.execute(sql_str)
         input()
 
 
     elif ans == "2":
         print("Slett en medlemstype?")
-        sql_str=f"DELETE FROM medlemmer where MedlemsID like {input}"
+        MTypeID = int(input("\nMTypeID skal bli slettes: \n"))
+        sql_str=f"DELETE FROM MedlemsType WHERE MTypeID like {MTypeID}"
         cursor.execute(sql_str)
 
     
