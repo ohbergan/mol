@@ -66,6 +66,7 @@ def menu5():
         print("her kan du se medlemene som er full eller støtte .")
         sql_str="INSERT INTO Medlemstyper ( MTypeNavn, Kontigent ) SELECT Medlemstyper.MTypeNavn, Medlemstyper.Kontigent FROM Medlemstyper;"
         cursor.execute(sql_str)
+        input()
 
 
     elif ans == "2":
