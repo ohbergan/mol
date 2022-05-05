@@ -1,18 +1,10 @@
-<!--
-Hey, thanks for using the awesome-readme-template template.  
-If you have any enhancements, then fork this project and create a pull request 
-or just open an issue with the label "enhancement".
-
-Don't forget to give this project a star for additional support ;)
-Maybe you can mention me or this repo in the acknowledgements too
--->
 <div align="center">
 <!--
   <img src="assets/logo.png" alt="logo" width="200" height="auto" />-->
   <h1>Mol</h1>
   
   <p>
-    A command line interface that easily let's you edit a membership register
+    A Norwegian command line interface that easily let's you edit a membership register
   </p>
   
   
